@@ -298,6 +298,9 @@ class Transformer:
             )
             crop_height = source_height
 
+        crop_width = max(1, crop_width)
+        crop_height = max(1, crop_height)
+
         crop_left = int(
             round(
                 min(
@@ -416,6 +419,9 @@ class Transformer:
         )
         self.context.request.width = int(max(requested_width, resize_width))
         self.context.request.height = int(max(requested_height, resize_height))
+
+        resize_width = max(1, resize_width)
+        resize_height = max(1, resize_height)
 
         self.engine.resize(resize_width, resize_height)
 
